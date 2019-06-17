@@ -24,14 +24,24 @@ class XylophoneApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Center(
-            child: FlatButton(
-              onPressed: () {},
-              child: Text("Let's play something"),
-            ),
+          child: Column(
+            children: createChildrenButtons(),
           ),
         ),
       ),
     );
+  }
+
+  List<FlatButton> createChildrenButtons() {
+    List<FlatButton> childrenButtons = List<FlatButton>();
+    for (Color color in colors) {
+      childrenButtons.add(new FlatButton(
+        onPressed: () {
+          playSound(colors.indexOf(color) + 1);
+        },
+        color: color,
+      ));
+    }
+    return childrenButtons;
   }
 }
