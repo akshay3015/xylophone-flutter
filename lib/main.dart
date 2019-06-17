@@ -23,8 +23,10 @@ class XylophoneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: createChildrenButtons(),
           ),
         ),
@@ -32,14 +34,16 @@ class XylophoneApp extends StatelessWidget {
     );
   }
 
-  List<FlatButton> createChildrenButtons() {
-    List<FlatButton> childrenButtons = List<FlatButton>();
+  List<Expanded> createChildrenButtons() {
+    List<Expanded> childrenButtons = List<Expanded>();
     for (Color color in colors) {
-      childrenButtons.add(new FlatButton(
-        onPressed: () {
-          playSound(soundNumber: colors.indexOf(color) + 1);
-        },
-        color: color,
+      childrenButtons.add(Expanded(
+        child: new FlatButton(
+          onPressed: () {
+            playSound(soundNumber: colors.indexOf(color) + 1);
+          },
+          color: color,
+        ),
       ));
     }
     return childrenButtons;
