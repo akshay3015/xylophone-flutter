@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
-  void playSound(int soundNumber) {
+  void playSound({int soundNumber}) {
     final player = AudioCache();
     player.play('note$soundNumber.wav');
   }
@@ -14,7 +14,7 @@ class XylophoneApp extends StatelessWidget {
     Colors.blue,
     Colors.teal,
     Colors.green,
-    Colors.white,
+    Colors.blueGrey,
     Colors.amber,
     Colors.purple
   ];
@@ -37,7 +37,7 @@ class XylophoneApp extends StatelessWidget {
     for (Color color in colors) {
       childrenButtons.add(new FlatButton(
         onPressed: () {
-          playSound(colors.indexOf(color) + 1);
+          playSound(soundNumber: colors.indexOf(color) + 1);
         },
         color: color,
       ));
